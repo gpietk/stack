@@ -8,6 +8,8 @@ import {
 import TabBarIcon from "../components/TabBarIcon";
 import HomeScreen from "../screens/HomeScreen";
 import LinksScreen from "../screens/LinksScreen";
+import QrScannerScreen from "../screens/QrScannerScreen";
+import QrGeneratorScreen from "../screens/QrGeneratorScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 
 const HomeStack = createStackNavigator({
@@ -56,8 +58,38 @@ SettingsStack.navigationOptions = {
   )
 };
 
+const QrScannerStack = createStackNavigator({
+  QrScannerStack: QrScannerScreen
+});
+
+QrScannerStack.navigationOptions = {
+  tabBarLabel: "QrScanner",
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === "ios" ? "ios-qr-scanner" : "md-qr-scanner"}
+    />
+  )
+};
+
+const QrGeneratorStack = createStackNavigator({
+  QrGeneratorStack: QrGeneratorScreen
+});
+
+QrGeneratorStack.navigationOptions = {
+  tabBarLabel: "QrGenerator",
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === "ios" ? "ios-qr-scanner" : "md-qr-scanner"}
+    />
+  )
+};
+
 export default createBottomTabNavigator({
   HomeStack,
   LinksStack,
-  SettingsStack
+  SettingsStack,
+  QrScannerStack,
+  QrGeneratorStack
 });
